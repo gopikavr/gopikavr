@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<conio.h>
+
+struct fraction
+{
+	int denom;
+	int numerat;
+};
+
+ struct fraction inputf()
+{
+	struct fraction f;
+	printf("enter the numerator of first fraction\n");
+	scanf("%d",&f.numerat);
+	printf("\nenter the denominator of first fraction\n");
+	scanf("%d",&f.denom);
+	return f;	
+}
+
+struct fraction add( struct fraction f1,struct fraction f2)
+{
+	struct fraction f;
+	if (f1.denom==f2.denom)
+	{ 
+	f.denom=f1.denom;
+	f.numerat=f1.numerat+f2.numerat;
+	}
+	else
+	{
+		f.numerat=f2.denom*f1.numerat+f1.denom*f2.numerat;
+		f.denom=f1.denom*f2.denom;
+	}
+	return f;
+}
+
+void displayfraction(struct fraction f)
+{
+	printf("The output is %d/%d",f.numerat,f.denom);
+}
+void main()
+{
+	struct fraction f,f1,f2;
+	f1=inputf();
+	f2=inputf();
+	f=add(f1,f2);
+	displayfraction(f);
+	getch();
+	
+	
+}
